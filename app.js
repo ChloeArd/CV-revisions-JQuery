@@ -1,165 +1,153 @@
-let h1 = document.querySelector("h1");
+$h1 = $("h1");
 
 // Increase text size + rotate
 setTimeout(function () {
-    h1.style.fontSize = "120px";
-    h1.style.backgroundColor = "white";
-    h1.style.border = "3px dashed black";
-    h1.style.padding = "15px";
-    h1.style.position = "absolute"
-    h1.style.top = "50%";
-    h1.style.left = "50%";
-    h1.style.transform = 'rotate(20deg)';
+    $h1.css({
+        "postion" : "absolute",
+        "font-size" : "120px",
+        "background-color" : "white",
+        "border" : "3px dashed black",
+        "padding": "15px",
+        "top" : "50%",
+        "left" : "50%",
+        "transform" : "rotate(20deg)"
+    });
 }, 0);
 setTimeout(function () {
-    h1.style.position = "relative";
-    h1.style.border = "none";
-    h1.style.top = "initial";
-    h1.style.left = "initial";
-    h1.style.backgroundColor = "white";
-    h1.style.padding = "0";
-    h1.style.transform = 'rotate(0deg)';
-    h1.style.fontSize = "50px";
+    $h1.css({
+        "position" : "relative",
+        "font-size" : "50px",
+        "border" : "none",
+        "padding": "0",
+        "top" : "initial",
+        "left" : "initial",
+        "transform" : "rotate(0deg)"
+    });
 }, 1000);
 
-let h2 = document.querySelectorAll("h2");
+$h2 = $("h2");
 
-for (let i = 0; i < h2.length; i++) {
+for ($i = 0; $i < $h2.length; $i++) {
     setInterval(function () {
-        h2[i].style.fontWeight = "bold"
-        h2[i].style.textShadow = "3px 3px 4px #216ed3";
+        $h2.css({
+            "font-weight" : "bold",
+            "text-shadow" : "3px 3px 4px #216ed3",
+        });
     }, 2000);
 
     setInterval(function () {
-        h2[i].style.fontWeight = "normal"
-        h2[i].style.textShadow = "0 0 0 white";
+        $h2.css({
+            "font-weight" : "normal",
+            "text-shadow" : "0 0 0 white",
+        });
     }, 6000);
 }
 
-let h3 = document.querySelectorAll("h3");
+$h3 = $("h3");
 
-for (let i = 0; i < h3.length; i++) {
+for ($i = 0; $i < $h3.length; $i++) {
     setInterval(function () {
-        h3[i].style.textDecoration = "none"
-        h3[i].style.opacity = "0.5";
-        h3[i].style.backgroundColor = "black";
+        $h3.css({
+            "text-decoration" : "none",
+            "opacity" : "0.5",
+            "background-color" : "black"
+        });
     }, 2000);
 
     setInterval(function () {
-        h3[i].style.textDecoration = "underline"
-        h3[i].style.opacity = "1";
-        h3[i].style.backgroundColor = "transparent";
+        $h3.css({
+            "text-decoration" : "underline",
+            "opacity" : "1",
+            "background-color" : "transparent"
+        });
     }, 6000);
 }
 
-if (document.getElementById("details1") && document.getElementById("details2")) {
-    nbClick("details1", "section1");
-    nbClick("details2", "section2");
+if ($("#details1") && $("#details2")) {
+    nbClick("#details1", "#section1");
+    nbClick("#details2", "#section2");
 }
 
-let figure  = document.querySelector("figure");
-let figCaption  = document.querySelector("figcaption");
-if (figure && figCaption) {
+$figure  = $("figure");
+$figCaption  = $("figcaption");
+if ($figure && $figCaption) {
     // add a class
-    figure.classList = "figure";
-    figCaption.classList = "figCaption";
-    document.getElementById("div1").classList = "card-container";
-    document.getElementById("div2").classList = "card";
-    document.getElementById("div3").classList = "card-front";
-    document.getElementById("div4").classList = "card-back";
-    let fig2 = document.querySelectorAll("figcaption");
-    fig2[1].classList = "figcaption2";
+    $figure.addClass("figure");
+    $figCaption.addClass("figCaption");
+    $("#div1").addClass("card-container");
+    $("#div2").addClass("card");
+    $("#div3").addClass("card-front");
+    $("#div4").addClass("card-back");
+    $fig2 = $("figcaption" + [1]);
+    $fig2.addClass("figcaption2");
 }
 
 // Retrieve a json file and display its content in HTML
-let xhr2 = new XMLHttpRequest();
-xhr2.open("GET", "first.json");
-xhr2.responseType = "json";
-
-xhr2.onload = function () {
-    let response = xhr2.response;
-
-    let createUl = document.createElement("ul");
-    let first =  document.getElementById("first");
-    first.prepend(createUl);
-
-    for (let i = 0; i < response.length; i++) {
-        let createLi = document.createElement("li");
-        createLi.innerHTML = response[i];
-        createUl.append(createLi);
+$.getJSON("first.json", function (response) {
+    $("#first").prepend("<ul id='ul'></ul>");
+    $rpe = response.length;
+    for ($i = 0; $i < $rpe; $i++) {
+        $("#ul").append("<li>" + response[$i] + "</li>");
     }
-}
-xhr2.send();
+});
 
-
-let xhr = new XMLHttpRequest();
-xhr.open("GET", "second.json");
-xhr.responseType = "json";
-
-xhr.onload = function () {
-    let response = xhr.response;
-
-    let createDl = document.createElement("dl");
-    let second =  document.getElementById("second");
-    second.prepend(createDl);
-
-    for (let i = 0; i < response.length; i++) {
-        let createDt = document.createElement("dt");
-        createDt.innerHTML = response[i][0];
-        createDl.append(createDt);
-        let createDd = document.createElement("dd");
-        createDd.innerHTML = response[i][1];
-        createDl.append(createDd);
-        if (createDd.innerHTML === response[3][1]) {
-            let createA = document.createElement("a");
-            createA.href = "https://github.com/ChloeArd";
-            createA.innerHTML = response[3][1];
-            let dd = document.querySelectorAll("dd");
-            dd[3].innerHTML = "";
-            dd[3].append(createA);
+$.getJSON("second.json", function (response) {
+    $("#second").prepend("<dl id='dl'></dl>");
+    $rpe = response.length;
+    for ($i = 0; $i < $rpe; $i++) {
+        $("#dl").append("<dt id='#dt'" + [$i] + ">" + response[$i][0] + "</dt>");
+        $("dl").append("<dd id='dd" + [$i] + "'>" + response[$i][1] + "</dd>");
+        $dd3 = $("#dd3").text();
+        if ($dd3 === response[3][1]) {
+            console.log("ok");
+            $dd = $("#dd3");
+            $dd.html("");
+            $dd.append("<a href='https://github.com/ChloeArd'>" + response[3][1] + "</a>");
         }
     }
-}
-xhr.send();
+});
 
-let span = document.querySelectorAll("span");
-if (span) {
+$span = $("span");
+if ($span) {
     // each letter changes color and font style when hovering the mouse over a label
-    let color = ['blue', 'red', 'yellow', 'orange', 'green', 'black', 'brown', 'gray', 'brown', 'blueviolet', 'coral', 'pink'];
-    let font = ['bold', 'normal'];
+    $color = ['blue', 'red', 'yellow', 'orange', 'green', 'black', 'brown', 'gray', 'brown', 'blueviolet', 'coral', 'pink'];
+    $font = ['bold', 'normal'];
 
-    document.getElementById("label1").addEventListener("mouseover",letterColorAndFont);
-    document.getElementById("label2").addEventListener("mouseover",letterColorAndFont);
-    document.getElementById("label3").addEventListener("mouseover",letterColorAndFont);
-    document.getElementById("label4").addEventListener("mouseover",letterColorAndFont);
+    $("#label1").on("mousemove",letterColorAndFont);
+    $("#label2").on("mousemove",letterColorAndFont);
+    $("#label3").on("mousemove",letterColorAndFont);
+    $("#label4").on("mousemove",letterColorAndFont);
 
     function letterColorAndFont () {
-        let time = 500;
-        for (let x = 0; x < span.length; x++) {
+        $time = 500;
+        for ($x = 0; $x < $span.length; $x++) {
             setTimeout(function () {
-                randomColor = color[Math.floor(Math.random() * color.length)];
-                randomFont = font[Math.floor(Math.random() * font.length)];
-                span[x].style.color = randomColor;
-                span[x].style.fontWeight = randomFont;
-                span[x].style.fontStyle = "italic";
-                span[x].style.fontSize = "25px";
-                console.log(span[x]);
-            }, time);
-            time = time + 500;
+                $randomColor = $color[Math.floor(Math.random() * $color.length)];
+                $randomFont = $font[Math.floor(Math.random() * $font.length)];
+                $spanx = $("span" + [$x]);
+                $("span").css({
+                    "color" : $randomColor,
+                    "font-weight" : $randomFont,
+                    "font-style" : "italic",
+                    "font-size" : "25px"
+                });
+            }, $time);
+            console.log($span.html());
+            $time = $time + 500;
         }
     }
 }
 
 function nbClick(id1, id2) {
-    let click = 0;
-    document.getElementById(id1).addEventListener("click", function () {
-        if (click === 0) {
-            document.getElementById(id2).style.display = "none";
-            click++;
+    $click = 0;
+    $(id1).on("click", function () {
+        if ($click === 0) {
+            $(id2).css("display", "none");
+            $click++;
         }
         else {
-            document.getElementById(id2).style.display = "flex";
-            click = 0;
+            $(id2).css("display", "flex");
+            $click = 0;
         }
     });
 }
