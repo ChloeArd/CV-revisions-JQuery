@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    width: 100%;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 15px;
+}
+
+header {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+main {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+a {
+    text-decoration: none;
+    color: gray;
+}
+
+header > a {
+    font-size: 30px;
+    color: #216ed3;
+    padding: 20px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.containerImage {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image {
+    width: 200px;
+    padding: 0;
+}
+
+.figure {
+    border: 1px solid #b4b4b4;
+    box-shadow: 10px 10px 10px gray;
+    padding: 5px;
+}
+
+.figCaption {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 3px;
+    margin-top: -4px;
+    font-style: italic;
+}
+
+.card-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+}
+.card-container:hover .card {
+    transform: rotateY(180deg);
+}
+.card {
+    position: absolute;
+    height: 290px;
+    width: 213px;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+}
+.card-front {
+    position: absolute;
+    height: 290px;
+    width: 213px;
+    backface-visibility: hidden;
+}
+.card-back {
+    position: absolute;
+    height: 290px;
+    width: 213px;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    backface-visibility: hidden;
+    transform: rotateY(-180deg);
+}
+
+.figcaption2 {
+    font-size: 20px;
+}
+
+#section1 {
+    background-color: #e7e7e7;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin: 15px;
+    font-size: 30px;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 50px;
+    color: #216ed3;
+    padding: 20px;
+}
+
+h3 {
+    font-size: 20px;
+    margin: 15px;
+    text-decoration: underline;
+    color: #216ed3;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+button {
+    border: none;
+    background-color: #216ed3;
+    border-radius: 10px;
+    color: white;
+    width: 40px;
+    height: 20px;
+    font-size: 18px;
+}
+
+button:hover {
+    background-color: #0d4da2;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid gray;
+}
+
+th, td {
+    border: 1px solid gray;
+    padding: 15px;
+}
+th  {
+    background-color: #eaeaea;
+}
+
+td {
+    background-color: #216ed3;
+    color: white;
+}
+
+nav > ul, nav > p {
+    font-size: 20px;
+}
+
+figcaption {
+    font-size: 10px;
+}
+
+dd {
+    margin-left: 10px;
+    color: gray;
+}
+
+dt::first-letter {
+    color: #216ed3;
+    font-weight: bold;
+}
+
+#form, fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+li:nth-child(2n) {
+    color: #0d4da2;
+}
+
+fieldset {
+    border: none;
+}
+
+label {
+    font-size: 20px;
+    color: #216ed3; margin: 25px;
+}
+
+input, textarea {
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #eaeaea;
+    width: 500px;
+}
+
+a[title] {
+    text-decoration: underline;
+}
+
+textarea {
+    height: 200px;
+}
+
+.submit {
+    margin: 15px;
+    background-color: #216ed3;
+    color: white;
+    width: 200px;
+}
+
+.submit:hover {
+    background-color: #0d4da2;
+}
+
+@media screen and (max-width: 1000px) {
+    main {
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 870px) {
+    main {
+        flex-direction: column-reverse;
+    }
+    #section1, .right {
+        width: 100%;
+    }
+    h3 {
+        font-size: 30px;
+    }
+    li, dt, dd {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    input, textarea {
+        width: 80%;
+    }
+    form {
+        width: 100%;
+    }
+    h1 {
+        font-size: 45px;
+    }
+}
