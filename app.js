@@ -125,15 +125,14 @@ if ($span) {
                 $randomColor = $color[Math.floor(Math.random() * $color.length)];
                 $randomFont = $font[Math.floor(Math.random() * $font.length)];
                 $spanx = $("span" + [$x]);
-                $("span").css({
+                $spanx.css({
                     "color" : $randomColor,
                     "font-weight" : $randomFont,
                     "font-style" : "italic",
                     "font-size" : "25px"
                 });
             }, $time);
-            console.log($span.html());
-            $time = $time + 500;
+            $time += 500;
         }
     }
 }
